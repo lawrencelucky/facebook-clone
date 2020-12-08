@@ -9,15 +9,16 @@ import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined';
 
 import './Sidebar.css';
 
+import { useStateValue } from './StateProvider';
+
 import SidebarRow from './SidebarRow';
 
 const Sidebar = () => {
+  const [{ user }] = useStateValue();
+
   return (
     <div className='sidebar'>
-      <SidebarRow
-        src='https://images.unsplash.com/photo-1559629819-638a8f0a4303?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8Ym95fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-        title='Lawrence Lucky'
-      />
+      <SidebarRow src={user.photoURL} title={user.displayName} />
       <SidebarRow
         Icon={LocalHospitalIcon}
         title='COVID-19 Information Center'

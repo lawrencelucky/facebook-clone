@@ -13,7 +13,11 @@ import { Avatar, IconButton } from '@material-ui/core';
 
 import './Header.css';
 
+import { useStateValue } from './StateProvider';
+
 const Header = () => {
+  const [{ user }] = useStateValue();
+
   return (
     <div className='header'>
       <div className='header__left'>
@@ -45,8 +49,8 @@ const Header = () => {
       </div>
       <div className='header__right'>
         <div className='header__info'>
-          <Avatar />
-          <h4>Lawrence Lucky</h4>
+          <Avatar src={user.photoURL} />
+          <h4>{user.displayName}</h4>
         </div>
 
         <IconButton>
